@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Сваха — клуб знакомств</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Сваха — новый клуб знакомств, где работает энергия и магия совпадений. Только настоящие люди. 18+." />
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/535/535234.png" />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- GSAP Animations CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <style>
+    body {
+      background: radial-gradient(ellipse at 50% 10%, #f43f5e18 0%, #211b32 80%), linear-gradient(120deg, #2d1753 0%, #22224a 100%);
+      min-height: 100vh;
+      margin: 0;
+      overflow-x: hidden;
+    }
+    .glass {
+      backdrop-filter: blur(18px) saturate(180%);
+      background: linear-gradient(130deg, #221934f7 65%, #f43f5e12 100%);
+      border-radius: 2.5rem;
+      border: 2px solid rgba(255,255,255,0.11);
+      box-shadow: 0 10px 60px 0 #c026d322, 0 2px 2px #f43f5e15;
+      position: relative;
+      overflow: hidden;
+    }
+    .glow {
+      box-shadow: 0 0 18px 0 #f43f5e90, 0 0 7px 0 #fff3;
+    }
+    .glow:hover {
+      box-shadow: 0 0 36px 8px #f43f5ebb;
+    }
+    .shine {
+      background: linear-gradient(115deg, #fff5 45%, #f472b64a 90%, #fff0 100%);
+      border-radius: 2.5rem;
+      filter: blur(3px);
+      position: absolute;
+      left: -10%; top: -10%;
+      width: 120%; height: 120%;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.17;
+      transform: rotate(8deg);
+    }
+    .parallax {
+      position: fixed;
+      left: 0; top: 0; width: 100vw; height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .blur-blobs {
+      filter: blur(80px);
+      opacity: 0.32;
+      animation: blobs 16s infinite alternate;
+    }
+    @keyframes blobs {
+      0% {transform: translateY(-10px);}
+      100% {transform: translateY(10px);}
+    }
+    .emoji-bounce {
+      display: inline-block;
+      animation: bounce 1.9s infinite alternate cubic-bezier(.6,-0.28,.74,1.4);
+      will-change: transform;
+    }
+    @keyframes bounce {
+      from { transform: translateY(0);}
+      to   { transform: translateY(-13px);}
+    }
+    .sparkle {
+      position: absolute;
+      top: 9px;
+      right: 42px;
+      width: 17px;
+      height: 17px;
+      pointer-events: none;
+      opacity: 0.7;
+      animation: sparkle 1.1s infinite;
+    }
+    @keyframes sparkle {
+      0% { opacity: 0.3; transform: scale(0.8) rotate(0deg);}
+      60% { opacity: 1; transform: scale(1.4) rotate(15deg);}
+      100% { opacity: 0.3; transform: scale(0.8) rotate(0deg);}
+    }
+    .lang-btn {
+      @apply px-4 py-1 text-xs rounded-2xl font-semibold shadow-md cursor-pointer select-none mr-2 transition;
+      border: 1.5px solid #fff3;
+      background: rgba(255,255,255,0.06);
+    }
+    .lang-btn-active {
+      background: linear-gradient(90deg, #f43f5e44, #818cf844);
+      color: #fff;
+      border-color: #f43f5e;
+      text-shadow: 0 2px 8px #f43f5e44;
+    }
+  </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen text-white font-sans">
+  <!-- Parallax blobs bg -->
+  <svg class="parallax blur-blobs" viewBox="0 0 800 600">
+    <ellipse cx="170" cy="220" rx="170" ry="120" fill="#f43f5e" />
+    <ellipse cx="620" cy="380" rx="140" ry="100" fill="#818cf8" />
+    <ellipse cx="410" cy="490" rx="110" ry="85" fill="#facc15" />
+  </svg>
+  <main class="glass p-8 sm:p-14 flex flex-col gap-8 shadow-2xl max-w-xl w-full mx-2 mt-12 sm:mt-0 relative fade-in">
+    <div class="shine"></div>
+    <!-- Языковой переключатель -->
+    <div class="flex justify-end w-full mb-2">
+      <span id="langRu" class="lang-btn lang-btn-active">🪬 Русский</span>
+      <span id="langEn" class="lang-btn">🔮 English</span>
+    </div>
+    <!-- Логотип и заголовок -->
+    <div class="flex flex-col items-center gap-2 z-10 relative">
+      <img src="https://cdn-icons-png.flaticon.com/512/535/535234.png" alt="Svacha logo" class="w-16 h-16 drop-shadow-xl" />
+      <h1 id="mainTitle" class="text-4xl sm:text-5xl font-bold tracking-tight text-center bg-gradient-to-r from-pink-400 via-fuchsia-400 to-yellow-300 bg-clip-text text-transparent select-none">
+        ✨ Сваха — клуб совпадений
+      </h1>
+      <div id="emojis" class="flex items-center justify-center gap-1 text-2xl mt-1 select-none">
+        <span class="emoji-bounce">🔮</span>
+        <span class="emoji-bounce" style="animation-delay:.5s">🌙</span>
+        <span class="emoji-bounce" style="animation-delay:1.1s">🪄</span>
+        <span class="emoji-bounce" style="animation-delay:.8s">🕯️</span>
+        <span class="emoji-bounce" style="animation-delay:1.6s">💖</span>
+      </div>
+      <div id="adults" class="text-sm mt-2 opacity-70 text-center select-none">
+        <span class="inline-flex items-center px-2 py-1 rounded-xl bg-pink-500/10 text-pink-200">18+ только для взрослых</span>
+      </div>
+    </div>
+
+    <!-- Анимированное описание -->
+    <div id="desc" class="text-xl sm:text-2xl text-gray-100 text-center fade-in delay-100 select-none">
+      Здесь работают <span class="text-pink-300 font-bold">энергия</span> и<br>
+      <span class="bg-gradient-to-r from-yellow-200 via-pink-300 to-pink-500 bg-clip-text text-transparent font-extrabold animate-gradient">магия совпадений</span>.
+    </div>
+
+    <!-- Эзотерические фишки -->
+    <div id="features" class="grid gap-4 sm:grid-cols-2 fade-in delay-200">
+      <div class="rounded-2xl bg-white/5 p-4 shadow-md border border-fuchsia-400/20 flex flex-col gap-1">
+        <div class="text-lg font-semibold text-pink-300 flex gap-1 items-center"><span>🧿</span> Энергия общения</div>
+        <div class="text-gray-300 text-sm">Каждый разговор как встреча двух миров — синхронично и тепло.</div>
+      </div>
+      <div class="rounded-2xl bg-white/5 p-4 shadow-md border border-yellow-400/20 flex flex-col gap-1">
+        <div class="text-lg font-semibold text-yellow-200 flex gap-1 items-center"><span>🪄</span> Магнитные совпадения</div>
+        <div class="text-gray-300 text-sm">Кто знает — может, встреча здесь изменит твою жизнь?</div>
+      </div>
+      <div class="rounded-2xl bg-white/5 p-4 shadow-md border border-blue-400/20 flex flex-col gap-1">
+        <div class="text-lg font-semibold text-blue-200 flex gap-1 items-center"><span>🕯️</span> Атмосфера доверия</div>
+        <div class="text-gray-300 text-sm">Здесь нет случайных людей — только те, кто готов к открытому диалогу.</div>
+      </div>
+      <div class="rounded-2xl bg-white/5 p-4 shadow-md border border-fuchsia-400/20 flex flex-col gap-1">
+        <div class="text-lg font-semibold text-fuchsia-200 flex gap-1 items-center"><span>🔗</span> Тонкая интуиция</div>
+        <div class="text-gray-300 text-sm">Следуй зову сердца — у нас ценят искренность, ощущение "своего" человека.</div>
+      </div>
+    </div>
+
+    <!-- Юридические ссылки -->
+    <div id="legal" class="text-xs text-gray-400 text-center fade-in delay-500">
+      Продолжая, вы соглашаетесь с<br>
+      <a href="terms.html" class="underline hover:text-pink-300 transition">Пользовательским соглашением</a> и
+      <a href="privacy.html" class="underline hover:text-pink-300 transition">Политикой конфиденциальности</a>
+    </div>
+
+    <!-- Контакты + владелец -->
+    <div id="owner" class="text-xs text-gray-400 text-center fade-in delay-600">
+      Владелец: Светлана Дорошенко, Россия <br>
+      Для связи: <a href="mailto:svaha3001@gmail.com" class="underline hover:text-pink-300">svaha3001@gmail.com</a>
+    </div>
+
+    <!-- Кнопка входа с искрой -->
+    <div class="flex flex-col items-center gap-2 fade-in delay-700 relative">
+      <label id="agreeLabel" for="agree18" class="flex items-center gap-2 cursor-pointer">
+        <input id="agree18" type="checkbox" class="accent-pink-500 scale-125" />
+        <span class="text-base">Мне исполнилось 18 лет, я согласен с правилами</span>
+      </label>
+      <button
+        id="goBot"
+        disabled
+        class="mt-2 glow bg-pink-500 hover:bg-pink-600 transition-all duration-200 text-white font-semibold px-8 py-3 rounded-2xl text-lg shadow-lg outline-none focus:ring-2 focus:ring-pink-400 disabled:opacity-60 relative"
+      >
+        Перейти к анкете
+        <svg class="sparkle" viewBox="0 0 22 22">
+          <g>
+            <circle cx="11" cy="11" r="4" fill="#fffbe6" />
+            <circle cx="11" cy="7" r="2" fill="#fde68a" />
+            <circle cx="16" cy="14" r="1" fill="#f43f5e" />
+          </g>
+        </svg>
+      </button>
+    </div>
+  </main>
+
+  <!-- GSAP и язык/эффекты -->
+  <script>
+    gsap.to(".fade-in", {
+      opacity: 1,
+      duration: 1.14,
+      stagger: 0.21,
+      ease: "power2.out"
+    });
+
+    function animateGradient() {
+      const el = document.querySelector('.animate-gradient');
+      let i = 0;
+      setInterval(() => {
+        i += 0.01;
+        el.style.backgroundPosition = `${50 + 14 * Math.sin(i*2)}% ${50 + 8 * Math.cos(i*3)}%`;
+      }, 18);
+    }
+    animateGradient();
+
+    // Кнопка доступна только если чекбокс выбран
+    const agree = document.getElementById('agree18');
+    const btn = document.getElementById('goBot');
+    agree.addEventListener('change', () => {
+      btn.disabled = !agree.checked;
+      btn.style.filter = agree.checked ? "drop-shadow(0 0 16px #f43f5e99)" : "";
+    });
+    btn.addEventListener('click', () => {
+      if (agree.checked) {
+        btn.innerText = (lang === 'en') ? 'Opening Telegram...' : 'Открываем Telegram...';
+        setTimeout(() => window.location.href='https://t.me/svacha_bot', 320);
+      }
+    });
+
+    // Языковая логика
+    let lang = "ru";
+    const strings = {
+      ru: {
+        mainTitle: "✨ Сваха — клуб совпадений",
+        desc: 'Здесь работают <span class="text-pink-300 font-bold">энергия</span> и<br><span class="bg-gradient-to-r from-yellow-200 via-pink-300 to-pink-500 bg-clip-text text-transparent font-extrabold animate-gradient">магия совпадений</span>.',
+        adults: '<span class="inline-flex items-center px-2 py-1 rounded-xl bg-pink-500/10 text-pink-200">18+ только для взрослых</span>',
+        features: `
+        <div class="rounded-2xl bg-white/5 p-4 shadow-md border border-fuchsia-400/20 flex flex-col gap-1">
+          <div class="text-lg font-semibold text-pink-300 flex gap-1 items-center"><span>🧿</span> Энергия общения</div>
+          <div class="text-gray-300 text-sm">Каждый разговор как встреча двух миров — синхронично и тепло.</div>
+        </div>
+        <div class="rounded-2xl bg-white/5 p-4 shadow-md border border-yellow-400/20 flex flex-col gap-1">
+          <div class="text-lg font-semibold text-yellow-200 flex gap-1 items-center"><span>🪄</span> Магнитные совпадения</div>
+          <div class="text-gray-300 text-sm">Кто знает — может, встреча здесь изменит твою жизнь?</div>
+        </div>
+        <div class="rounded-2xl bg-white/5 p-4 shadow-md border border-blue-400/20 flex flex-col gap-1">
+          <div class="text-lg font-semibold text-blue-200 flex gap-1 items-center"><span>🕯️</span> Атмосфера доверия</div>
+          <div class="text-gray-300 text-sm">Здесь нет случайных людей — только те, кто готов к открытому диалогу.</div>
+        </div>
+        <div class="rounded-2xl bg-white/5 p-4 shadow-md border border-fuchsia-400/20 flex flex-col gap-1">
+          <div class="text-lg font-semibold text-fuchsia-200 flex gap-1 items-center"><span>🔗</span> Тонкая интуиция</div>
+          <div class="text-gray-300 text-sm">Следуй зову сердца — у нас ценят искренность, ощущение "своего" человека.</div>
+        </div>
+        `,
+        legal: 'Продолжая, вы соглашаетесь с<br><a href="terms.html" class="underline hover:text-pink-300 transition">Пользовательским соглашением</a> и <a href="privacy.html" class="underline hover:text-pink-300 transition">Политикой конфиденциальности</a>',
+        owner: 'Владелец: Светлана Дорошенко, Россия <br>Для связи: <a href="mailto:svaha3001@gmail.com" class="underline hover:text-pink-300">svaha3001@gmail.com</a>',
+        agreeLabel: 'Мне исполнилось 18 лет, я согласен с правилами',
+        btnText: 'Перейти к анкете'
+      },
+      en: {
+        mainTitle: "✨ Svacha — Club of Synchronicity",
+        desc: 'Here, <span class="text-pink-300 font-bold">energy</span> and<br><span class="bg-gradient-to-r from-yellow-200 via-pink-300 to-pink-500 bg-clip-text text-transparent font-extrabold animate-gradient">magic coincidences</span> work.',
+        adults: '<span class="inline-flex items-center px-2 py-1 rounded-xl bg-pink-500/10 text-pink-200">18+ adults only</span>',
+        features: `
+        <div class="rounded-2xl bg-white/5 p-4 shadow-md border border-fuchsia-400/20 flex flex-col gap-1">
+          <div class="text-lg font-semibold text-pink-300 flex gap-1 items-center"><span>🧿</span> Energy of conversation</div>
+          <div class="text-gray-300 text-sm">Every chat is a meeting of worlds — synchronously and warmly.</div>
+        </div>
+        <div class="rounded-2xl bg-white/5 p-4 shadow-md border border-yellow-400/20 flex flex-col gap-1">
+          <div class="text-lg font-semibold text-yellow-200 flex gap-1 items-center"><span>🪄</span> Magnetic coincidences</div>
+          <div class="text-gray-300 text-sm">Who knows — maybe a meeting here will change your life?</div>
+        </div>
+        <div class="rounded-2xl bg-white/5 p-4 shadow-md border border-blue-400/20 flex flex-col gap-1">
+          <div class="text-lg font-semibold text-blue-200 flex gap-1 items-center"><span>🕯️</span> Atmosphere of trust</div>
+          <div class="text-gray-300 text-sm">There are no random people here — only those ready for real dialogue.</div>
+        </div>
+        <div class="rounded-2xl bg-white/5 p-4 shadow-md border border-fuchsia-400/20 flex flex-col gap-1">
+          <div class="text-lg font-semibold text-fuchsia-200 flex gap-1 items-center"><span>🔗</span> Fine intuition</div>
+          <div class="text-gray-300 text-sm">Follow your heart — we value honesty and the vibe of “your” people.</div>
+        </div>
+        `,
+        legal: 'By continuing, you agree to our<br><a href="terms.html" class="underline hover:text-pink-300 transition">Terms of Service</a> and <a href="privacy.html" class="underline hover:text-pink-300 transition">Privacy Policy</a>',
+        owner: 'Owner: Svetlana Doroshenko, Russia <br>Contact: <a href="mailto:svaha3001@gmail.com" class="underline hover:text-pink-300">svaha3001@gmail.com</a>',
+        agreeLabel: "I'm 18+ and accept the rules",
+        btnText: 'Go to the questionnaire'
+      }
+    };
+
+    function setLang(l) {
+      lang = l;
+      document.getElementById('langRu').classList.toggle('lang-btn-active', lang === 'ru');
+      document.getElementById('langEn').classList.toggle('lang-btn-active', lang === 'en');
+      document.getElementById('mainTitle').innerHTML = strings[lang].mainTitle;
+      document.getElementById('desc').innerHTML = strings[lang].desc;
+      document.getElementById('adults').innerHTML = strings[lang].adults;
+      document.getElementById('features').innerHTML = strings[lang].features;
+      document.getElementById('legal').innerHTML = strings[lang].legal;
+      document.getElementById('owner').innerHTML = strings[lang].owner;
+      document.getElementById('agreeLabel').innerHTML = `<input id="agree18" type="checkbox" class="accent-pink-500 scale-125" /> <span>${strings[lang].agreeLabel}</span>`;
+      document.getElementById('goBot').innerText = strings[lang].btnText;
+      // fix agree logic after language switch
+      document.getElementById('agree18').addEventListener('change', () => {
+        btn.disabled = !document.getElementById('agree18').checked;
+        btn.style.filter = document.getElementById('agree18').checked ? "drop-shadow(0 0 16px #f43f5e99)" : "";
+      });
+    }
+
+    document.getElementById('langRu').onclick = () => setLang('ru');
+    document.getElementById('langEn').onclick = () => setLang('en');
+    setLang('ru');
+
+    // Кнопка открытия Telegram с разной надписью
+    document.getElementById('goBot').onclick = () => {
+      if (document.getElementById('agree18').checked) {
+        document.getElementById('goBot').innerText = (lang === 'en') ? 'Opening Telegram...' : 'Открываем Telegram...';
+        setTimeout(() => window.location.href='https://t.me/svacha_bot', 320);
+      }
+    };
+  </script>
+</body>
+</html>
