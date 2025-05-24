@@ -1,11 +1,35 @@
 body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: 'Segoe UI', 'Arial', sans-serif;
   background: #130a1b;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
   overflow-x: hidden;
-  position: relative;
 }
+
+#fx-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw; height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+  display: block;
+}
+
+main.glass {
+  position: relative;
+  z-index: 2;
+  margin: 6vh auto 0 auto;
+  max-width: 440px;
+  width: 98vw;
+  padding: 38px 26px 24px 26px;
+  background: rgba(255,255,255,0.10);
+  border-radius: 2.3rem;
+  box-shadow: 0 14px 64px 12px #c36cf555, 0 2.2px 11px #3a234a2c;
+  border: 2.5px solid #ecddff31;
+  backdrop-filter: blur(32px) saturate(180%);
+  transition: transform .25s cubic-bezier(.6,.2,.44,1.18);
+}
+
 
 #fx-bg {
   position: fixed;
@@ -17,28 +41,6 @@ body {
     radial-gradient(ellipse 12vw 7vw at 15vw 98vh, #f84e6c19 0%, transparent 90%),
     linear-gradient(120deg, #231034 0%, #14091d 100%);
   pointer-events: none;
-}
-
-#fx-canvas {
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-}
-
-main.glass {
-  position: relative;
-  z-index: 10;
-  margin: 6vh auto 0 auto;
-  max-width: 440px;
-  width: 98vw;
-  padding: 38px 26px 24px 26px;
-  background: rgba(247, 247, 247, 0.171);
-  border-radius: 2.3rem;
-  box-shadow: 0 14px 64px 12px #c36cf555, 0 2.2px 11px #3a234a2c;
-  border: 2.5px solid #f2eff731;
-  backdrop-filter: blur(32px) saturate(180%);
-  animation: fadeIn .9s;
 }
 
 @keyframes fadeIn { from { opacity: 0; transform: translateY(42px);} to { opacity: 1; transform: none; } }
