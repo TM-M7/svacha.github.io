@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html><body>
+<script>
+  // Самый простой вариант (можешь заменить на AJAX, php, внешнюю аналитику)
+  if(!localStorage.getItem('svaha_visited')) {
+    fetch('/counter.php'); // или просто "увеличить" число где-то на сервере
+    localStorage.setItem('svaha_visited', '1');
+  }
+</script>
+</body></html>
