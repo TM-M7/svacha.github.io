@@ -7,16 +7,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
     content="Сваха — клуб знакомств с ручным подбором, душевной атмосферой, для серьёзных знакомств. 18+" />
-  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/535/535234.png" />
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/16384/16384818.png" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
-      background: radial-gradient(ellipse 90vw 100vh at 50% 0%, #fffbe8 0%, #ffe2fa 60%, #e4e4ff 100%) fixed;
+      background:
+        radial-gradient(ellipse 80vw 50vw at 50% 0%, #f2c7f57a 0%, #2e1847 100%) fixed,
+        linear-gradient(120deg, #421055 0%, #6a258d 60%, #e569a7 100%) fixed;
       min-height: 100vh;
       margin: 0;
       font-family: 'Segoe UI', 'Arial', sans-serif;
       overflow-x: hidden;
     }
+
+
+
 
     .glass {
       backdrop-filter: blur(24px) saturate(170%);
@@ -157,6 +162,37 @@
       margin-top: 13px;
       text-shadow: 0 1px 8px #e8e8ffcc;
     }
+
+    .heart-title {
+      font-size: 2.7em;
+      font-weight: 900;
+      text-align: center;
+      letter-spacing: .025em;
+      background: linear-gradient(93deg, #b433c5 8%, #e795c5 55%, #d84567 94%);
+      background-size: 220% 220%;
+      background-position: 0% 60%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      animation: gradmove 6.2s cubic-bezier(.42, 0, .61, 1) infinite alternate;
+      text-shadow:
+        0 2px 13px #551a5e44,
+        /* глубокая тень для объёма */
+        0 4px 26px #c055a833,
+        /* лавандовая легкая аура */
+        0 2px 10px #d8456799;
+      /* акцент красно-фиолетовый */
+    }
+
+    @keyframes gradmove {
+      0% {
+        background-position: 0% 60%;
+      }
+
+      100% {
+        background-position: 100% 40%;
+      }
+    }
   </style>
 </head>
 
@@ -175,13 +211,12 @@
     </div>
     <!-- Логотип и заголовок -->
     <div class="flex flex-col items-center gap-2 z-10 relative">
-      <img src="https://cdn-icons-png.flaticon.com/512/535/535234.png" alt="Svacha logo"
+      <img src="https://cdn-icons-png.flaticon.com/512/16384/16384818.png" alt="Svacha logo"
         class="w-24 h-24 drop-shadow-xl mb-1" />
-      <h1 id="mainTitle"
-        class="text-4xl sm:text-5xl font-extrabold tracking-tight text-center bg-gradient-to-r from-pink-400 via-fuchsia-500 to-indigo-500 bg-clip-text text-transparent select-none"
-        style="letter-spacing:.02em">
+      <h1 id="mainTitle" class="heart-title select-none">
         Сваха — клуб знакомств
       </h1>
+
       <div id="emojis" class="flex items-center justify-center gap-2 text-4xl mt-1 select-none">
         <span class="emoji-bounce">🌹</span>
         <span class="emoji-bounce" style="animation-delay:.6s">🕯️</span>
