@@ -1,40 +1,135 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Пользовательское соглашение</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
-            line-height: 1.6;
-            background-color: #f9f9f9;
-        }
-        h1 {
-            color: #a10055;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Пользовательское соглашение — Сваха</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/16384/16384818.png"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      min-height: 100vh;
+      background: linear-gradient(120deg, #311042 0%, #732995 50%, #f5d7ef 100%);
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+      color: #fff7fc;
+      padding: 0; margin: 0;
+      letter-spacing: .018em;
+    }
+    .terms-card {
+      max-width: 720px;
+      margin: 42px auto 30px auto;
+      background: rgba(38, 14, 42, 0.98);
+      border-radius: 2.6rem;
+      padding: 52px 34px 39px 34px;
+      box-shadow: 0 13px 80px #d778f455, 0 4px 14px #be85d966;
+      border: 2.5px solid #e7c0ed55;
+      position: relative;
+      overflow: hidden;
+    }
+    .main-title {
+      text-align:center;
+      font-size:2.26em;
+      font-weight:900;
+      margin-bottom:7px;
+      letter-spacing:.02em;
+      background:linear-gradient(93deg,#b433c5 8%,#e795c5 55%,#d84567 94%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      color:transparent;
+      background-size:200% 200%;
+      animation: gradmove 5s cubic-bezier(.38,.1,.63,1) infinite alternate;
+      text-shadow:0 3px 26px #db86f322,0 1px 9px #c946a966;
+    }
+    @keyframes gradmove {
+      0% {background-position:0% 60%;}
+      100% {background-position:100% 40%;}
+    }
+    .terms-section {
+      margin: 32px 0 17px 0;
+    }
+    h2, h3 {
+      color: #ffc7e5;
+      font-weight: 700;
+      margin-top: 27px;
+      margin-bottom: 7px;
+      font-size:1.19em;
+      letter-spacing: .01em;
+      text-shadow: 0 1px 9px #eeabfc38;
+    }
+    ul, ol { margin-bottom: 15px; }
+    ul li::before {
+      content: '✨';
+      margin-right: 8px;
+      color: #e795c5;
+      font-size: 1em;
+    }
+    b, strong { color: #f9b7ef; }
+    .mini-heart {
+      display:inline-block;
+      vertical-align:-3px;
+      width:30px;
+      margin-right:5px;
+    }
+    .footer {
+      margin-top:35px;
+      text-align:center;
+      color:#ecd1ee;
+      font-size:1.09em;
+    }
+    .footer a {color:#fca3da;text-decoration:underline;}
+    @media (max-width:700px){
+      .terms-card{padding:14px 4vw 14px;}
+    }
+  </style>
 </head>
 <body>
-    <h1>Пользовательское соглашение</h1>
+  <div class="terms-card">
+    <img src="https://cdn-icons-png.flaticon.com/512/16384/16384818.png" class="mini-heart" alt="сердце"/>
+    <span class="main-title">Пользовательское соглашение</span>
+    <div class="terms-section">
+      <p>
+        Настоящее Пользовательское соглашение (далее — «Соглашение») регулирует условия использования сервиса знакомств <b>@Svacha_bot</b>, включая сайт <a href="https://tm-m7.github.io/svacha.github.io/" style="color:#e795c5;text-decoration:underline;">https://tm-m7.github.io/svacha.github.io/</a>.<br>
+        Начав использование Сервиса, вы подтверждаете, что ознакомлены и согласны с настоящим Соглашением.
+      </p>
 
-<p>Пользователь, начиная взаимодействие с ботом @Svacha_bot, подтверждает, что:</p>
+      <h2>1. Общие положения</h2>
+      <ul>
+        <li>Сервис предоставляется частным лицом — Светланой Дорошенко, Россия.</li>
+        <li>Цель — помощь в подборе партнёра для серьёзных отношений, ручной индивидуальный подбор по анкете.</li>
+      </ul>
 
-<ul>
-<li>Ему исполнилось 18 лет;</li>
-<li>Он предоставляет достоверную информацию о себе;</li>
-<li>Использует сервис исключительно для поиска серьёзных отношений;</li>
-<li>Не размещает материалы сексуального, агрессивного или оскорбительного характера;</li>
-<li>Понимает, что администраторы могут отклонить анкету без объяснения причин.</li>
-</ul>
+      <h2>2. Условия участия</h2>
+      <ul>
+        <li>Только для совершеннолетних пользователей (18+).</li>
+        <li>Пользователь обязуется предоставлять достоверные данные и использовать сервис только для личных, некоммерческих целей.</li>
+        <li>Запрещается размещение/передача информации, нарушающей законы РФ.</li>
+        <li>Сервис вправе отклонить или удалить анкету без объяснения причин.</li>
+        <li>Заполнение анкеты — бесплатно. Доступ к контактам возможен только в рамках индивидуального сопровождения.</li>
+      </ul>
 
-<p>Использование бота означает согласие с условиями настоящего соглашения и политикой конфиденциальности.</p>
+      <h2>3. Обработка и защита данных</h2>
+      <ul>
+        <li>Все анкеты и фото обрабатываются только для внутренних целей подбора.</li>
+        <li>Данные не публикуются и не передаются третьим лицам.</li>
+        <li>Вы можете запросить удаление данных в любой момент — просто напишите <a href="mailto:svaha3001@gmail.com" style="color:#e795c5;text-decoration:underline;">svaha3001@gmail.com</a>.</li>
+      </ul>
 
-<p><strong>Владелец сервиса:</strong> Светлана Дорошенко, частное лицо, Россия<br />
-<strong>Контакт:</strong> svaha3001@gmail.com</p>
+      <h2>4. Ответственность</h2>
+      <ul>
+        <li>Сервис не несёт ответственности за действия пользователей после передачи контактов.</li>
+        <li>Не гарантируется успешность или безопасность взаимодействия, подбор субъективен.</li>
+        <li>Пользователь самостоятельно принимает решения и несёт за них ответственность.</li>
+      </ul>
 
+      <h2>5. Связь с владельцем</h2>
+      <div>
+        Владелец сервиса: Светлана Дорошенко, частное лицо, Россия.<br>
+        Контакт: <a href="mailto:svaha3001@gmail.com" style="color:#e795c5;">svaha3001@gmail.com</a>
+      </div>
+    </div>
+    <div class="footer">
+      <a href="privacy.html">Политика конфиденциальности</a>
+    </div>
+  </div>
 </body>
 </html>
