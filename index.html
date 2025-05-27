@@ -12,7 +12,7 @@
           'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
     })(window, document, 'script', 'dataLayer', 'GTM-M3RPB3L6');</script>
   <!-- End Google Tag Manager -->
-  
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-73D49CE416"></script>
   <script>
@@ -35,6 +35,22 @@
   <!-- Магия фона: дымок, волны, sparkles -->
   <div id="fx-bg"></div>
   <canvas id="fx-canvas"></canvas>
+  <div id="startModal" class="modal" style="display:flex;">
+    <div class="modal-content">
+      <div class="age-badge">18+</div>
+      <p style="font-size:1.2em; margin: 0.6em 0 1.2em 0;">Готовы начать?</p>
+      <button id="goToBotModal" class="modal-btn" style="margin-bottom:.7em;">Перейти в бота</button>
+      <br>
+      <button id="stayOnSite" class="modal-btn modal-btn-secondary">Почитать подробнее</button>
+      <div class="modal-legal">
+        Продолжая, вы подтверждаете, что вам уже исполнилось 18 лет,<br>
+        и соглашаетесь с
+        <a href="terms.html" target="_blank">Пользовательским соглашением</a> и
+        <a href="privacy.html" target="_blank">Политикой конфиденциальности</a>
+      </div>
+    </div>
+  </div>
+
   <main class="glass">
     <div class="language-switch">
       <button id="lang-ru" class="lang-btn lang-active">🇷🇺 Русский</button>
